@@ -1,0 +1,31 @@
+DENIS AI PORTFOLIO: EXACT MAC STEPS
+
+A. Download denis-ai-portfolio.zip to Downloads.
+B. Double click ZIP to unzip.
+C. Open Terminal and paste the following ONE command:
+
+cd ~/Downloads/denis-ai-portfolio && npm install && npm run dev
+
+Then open http://localhost:3000 in Safari.
+
+If `npm: command not found`, install the LTS version of Node.js from https://nodejs.org and rerun the command.
+
+To stop the server, press Control+C in Terminal.
+To run again:
+cd ~/Downloads/denis-ai-portfolio && npm run dev
+
+To verify production build:
+cd ~/Downloads/denis-ai-portfolio && npm run build
+
+DEPLOY
+
+Use GitHub Desktop to add this folder as a new repository, commit, and publish to GitHub. Then import the repository from Vercel (https://vercel.com/new). GitHub Desktop avoids writing git commands.
+
+BEFORE FINAL PUBLICATION
+
+- Confirm which personal name you prefer on the website.
+- Replace provisional MSc award text once official award is confirmed.
+- Add your finalized CV and verified LinkedIn URL if desired.
+- Optionally set your published domain in app/layout.tsx for social sharing metadata.
+
+All other website files and project content are already written.
