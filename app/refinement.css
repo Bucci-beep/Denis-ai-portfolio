@@ -1,0 +1,168 @@
+.hero-context {
+  max-width: 670px;
+  margin: 20px 0 0;
+  color: #68746b;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.hero-links {
+  display: flex;
+  gap: 22px;
+  margin-top: 31px;
+}
+
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero-links a:hover { text-decoration: underline; }
+
+.focus-statement {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  padding: 22px 0;
+  border-bottom: 1px solid #e7e9e2;
+}
+
+.focus-statement > span {
+  padding-top: 2px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.focus-statement strong {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.focus-statement p {
+  margin: 7px 0 0;
+  color: #748077;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.practice-section { padding-top: 128px; }
+.practice-heading { align-items: end; }
+.practice-heading > p {
+  max-width: 410px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.practice-card {
+  min-height: 245px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.practice-card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--accent);
+}
+
+.practice-card > div span { font-size: 10px; font-weight: 700; }
+.practice-card h3 {
+  margin: 32px 0 13px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.practice-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.footer-identity strong { display: block; }
+.footer-links a { display: inline-flex; align-items: center; gap: 7px; }
+.footer-base { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.footer-base a { color: #d6e6d6; }
+.footer-base a:hover { text-decoration: underline; }
+.about-principle {
+  margin: 30px 0;
+  color: #3f654a;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.aside-link { display: flex; width: max-content; margin-top: 16px; }
+.capability-section { margin-top: 105px; }
+.capability-section h2 {
+  margin: 14px 0 32px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 47px;
+  font-weight: 400;
+}
+
+.capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.capability-grid article { padding: 22px 4px; border-top: 1px solid var(--line); }
+.capability-grid h3 {
+  margin: 0 0 10px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.capability-grid p {
+  max-width: 510px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.research-method-note {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin: -24px 0 48px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--accent);
+  background: #edf2eb;
+}
+
+.research-method-note strong { color: var(--accent-dark); font-size: 12px; white-space: nowrap; }
+.research-method-note p { margin: 0; color: #5f6c61; font-size: 13px; line-height: 1.7; }
+.contact-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 960px) {
+  .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .hero-links { margin-top: 25px; }
+  .practice-section { padding-top: 84px; }
+  .practice-heading { flex-direction: column; align-items: flex-start; }
+  .practice-grid, .capability-grid { grid-template-columns: 1fr; }
+  .practice-card { min-height: 0; }
+  .footer-base { flex-direction: column; align-items: flex-start; }
+  .capability-section { margin-top: 72px; }
+  .capability-section h2 { font-size: 38px; }
+  .research-method-note { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: -10px; }
+}

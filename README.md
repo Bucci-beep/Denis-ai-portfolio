@@ -1,20 +1,24 @@
-# Denis Kahuthu | Applied AI portfolio
+# Denis Kibuchi Kahuthu | Agentic AI Research Engineer
 
-A complete Next.js portfolio with a research-first narrative and modern engineering presentation.
+A Next.js portfolio presenting research investigation and practical AI engineering as complementary capabilities. Project case studies separate implementation, evaluation evidence, and limitations.
 
 ## Run on a Mac
 
-1. Download the ZIP and unzip it.
-2. Open Terminal. Type `cd ` (with the space), drag the unzipped `denis-ai-portfolio` folder into Terminal, press Return.
-3. Run `npm install`.
+1. Clone the repository.
+2. Change into the project directory.
+3. Run `npm ci`.
 4. Run `npm run dev`.
 5. Visit http://localhost:3000
 
 Requires Node.js 20.9 or newer. Check with `node --version`.
 
-## Production check
+## Validation
 
-`npm run build`
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
 ## Publish with Vercel
 
@@ -26,10 +30,10 @@ Push this folder to a GitHub repository. At vercel.com, choose Add New > Project
 - `lib/projects.ts` — project status, descriptions, evidence and links.
 - `lib/notes.ts` — research notebook pieces.
 - `app/about/page.tsx` — education and experience.
-- `public/cv.pdf` — place a finalized CV here when ready; no CV link is displayed until a file has been added manually.
+- `public/cv.pdf` — downloadable CV linked from the header, homepage, about page, contact page, and footer.
 
 ## Important accuracy notes
 
-This content identifies Denis Kahuthu, not Zafar Lashari. The MSc classification is explicitly provisional pending the official award. The MSc ECG system was a *group* project and Denis's contribution is identified specifically. All medical and financial prototypes carry scope limitations. Any unverified deployment URLs and unpublished papers are omitted, not invented.
+The MSc academic requirements are complete, while official award confirmation remains pending. The collaborative MSc bio-signal project identifies Denis's contribution specifically. Software tests and model results are not presented as clinical validation, scientific generalisability, or production readiness. Medical and financial prototypes carry explicit scope limitations, and unverified deployment URLs or publications are omitted.
 
-To add a verified LinkedIn URL, fill in `linkedin` in `lib/site.ts` and optionally add a link component. You can optionally add your real domain as `metadataBase` in `app/layout.tsx` after publishing.
+Verified GitHub, LinkedIn, email, CV, and portfolio URLs are defined centrally in `lib/site.ts`.

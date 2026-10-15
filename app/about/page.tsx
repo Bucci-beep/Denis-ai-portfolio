@@ -1,2 +1,121 @@
-import type {Metadata} from "next";import Link from "next/link";import {ArrowUpRight} from "lucide-react";export const metadata:Metadata={title:"About"};
-export default function About(){return <div className="container page-block"><div className="page-intro"><span className="eyebrow">ABOUT / BACKGROUND</span><h1>Research-minded. <em>Engineering-led.</em></h1><p>I’m Denis Kahuthu, an applied AI practitioner based in Bristol. My work spans medical AI, language systems and carefully bounded automated decisions.</p></div><div className="about-grid"><section className="about-story"><h2>My work</h2><p>My MSc Artificial Intelligence studies at the University of the West of England brought me into practical research on ECG processing, interpretable machine learning, and evidence-aware reasoning. I contributed to ECG preprocessing and reasoning in a collaborative healthcare AI project.</p><p>I now work on independent AI research prototypes that connect modeling to software engineering. My interests include uncertainty estimation, biomedical NLP, medical imaging and robust agentic workflows.</p><p>I value reproducible experiments, clear documentation and precise claims about what systems can and cannot do.</p><h2>Education</h2><div className="timeline-item"><div className="timeline-year">2025–2026</div><div><strong>MSc Artificial Intelligence</strong><p>University of the West of England, Bristol</p><p>Degree requirements completed. Provisional 2:1 classification; official award confirmation pending.</p></div></div><div className="timeline-item"><div className="timeline-year">2016–2021</div><div><strong>BTech Information Technology</strong><p>Technical University of Mombasa</p></div></div><h2>Selected recognition</h2><div className="timeline-item"><div className="timeline-year">2026</div><div><strong>UKFinnovator Bristol Hackathon</strong><p>Honourable mention for a team project addressing financial technology decision support.</p></div></div></section><aside className="about-aside"><span className="eyebrow">RESEARCH INTERESTS</span><div className="interest-list"><span>Biomedical artificial intelligence</span><span>Machine learning under uncertainty</span><span>Agentic and multi-agent systems</span><span>Information retrieval and NLP</span><span>Evidence-aware decision support</span></div><div className="about-quote">“The strongest system is not the one that always answers, but the one that knows what its evidence supports.”</div><Link href="/projects" className="inline-link">Explore my work <ArrowUpRight size={16}/></Link></aside></div><section className="experience-section"><span className="eyebrow">PROFESSIONAL EXPERIENCE</span><h2>Earlier experience<span className="period">.</span></h2><p className="experience-lead">A background in IT support and media operations, including technical troubleshooting, communication and structured record keeping.</p><div className="experience-list"><div><span>Aug 2022 – Aug 2024</span><section><h3>Photojournalist</h3><p>Standard Media Group LLC</p><small>Produced multimedia content and maintained spreadsheet records for submitted work and payment claims.</small></section></div><div><span>Mar 2020 – Mar 2022</span><section><h3>Media Communications Specialist</h3><p>P.C.E.A. Happy Valley Church</p><small>Coordinated production schedules, livestreams, panel discussion preparation and editing workflows.</small></section></div><div><span>Jan 2021 – Apr 2021</span><section><h3>IT Intern</h3><p>Mount Kenya University</p><small>Supported students and staff with faulty computers, network access and password issues.</small></section></div></div></section></div>}
+import type { Metadata } from "next";
+import { ArrowUpRight, FileText } from "lucide-react";
+import Link from "next/link";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Research and engineering background of Agentic AI Research Engineer Denis Kibuchi Kahuthu.",
+};
+
+export default function About() {
+  return (
+    <div className="container page-block">
+      <header className="page-intro">
+        <span className="eyebrow">ABOUT / RESEARCH + ENGINEERING</span>
+        <h1>Investigating systems. <em>Engineering evidence.</em></h1>
+        <p>
+          I am Denis Kibuchi Kahuthu, an Agentic AI Research Engineer based in Bristol.
+          I combine machine-learning investigation with the software engineering needed
+          to turn research questions into reproducible, inspectable systems.
+        </p>
+      </header>
+
+      <div className="about-grid">
+        <section className="about-story">
+          <h2>Research and engineering practice</h2>
+          <p>
+            My work spans agentic orchestration, uncertainty-aware machine learning,
+            biomedical AI, retrieval systems, and constrained decision-support workflows.
+            I design architectures, implement experiments, examine errors, and test how
+            systems behave when evidence is incomplete or tools fail.
+          </p>
+          <p>
+            Reliability has several layers. Automated tests can verify software behaviour;
+            model evaluation measures performance on defined data; reproducibility checks
+            whether an experiment can be repeated. None of these alone establishes external
+            validity, safety, or readiness for real-world clinical use.
+          </p>
+          <p>
+            I am interested in research engineering, applied AI research, Knowledge Transfer
+            Partnerships, and industry roles where careful investigation and maintainable
+            implementation reinforce each other.
+          </p>
+
+          <h2>Education</h2>
+          <div className="timeline-item">
+            <div className="timeline-year">2025-2026</div>
+            <div>
+              <strong>MSc Artificial Intelligence</strong>
+              <p>University of the West of England, Bristol</p>
+              <p>Academic requirements completed; official award confirmation pending.</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-year">2016-2021</div>
+            <div>
+              <strong>BTech Information Technology</strong>
+              <p>Technical University of Mombasa</p>
+            </div>
+          </div>
+
+          <h2>Current professional experience</h2>
+          <div className="timeline-item">
+            <div className="timeline-year">2025-PRESENT</div>
+            <div>
+              <strong>Kitchen Porter / Operations Support</strong>
+              <p>Fed Cafe, Bristol</p>
+              <p>
+                Work within time-critical operations, maintaining rigorous procedures,
+                dependable execution, and coordination across a multidisciplinary team.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <aside className="about-aside">
+          <span className="eyebrow">CORE INTERESTS</span>
+          <div className="interest-list">
+            <span>Agentic workflows and tool orchestration</span>
+            <span>Uncertainty, calibration, and OOD assessment</span>
+            <span>Biomedical language, signal, and vision systems</span>
+            <span>Evaluation, testing, and reproducibility</span>
+            <span>Evidence-grounded decision support</span>
+          </div>
+          <p className="about-principle">
+            The strongest systems make their evidence, assumptions, and limits inspectable.
+          </p>
+          <a href={site.cv} className="inline-link aside-link" target="_blank" rel="noopener noreferrer">
+            <FileText size={16} /> Download CV
+          </a>
+          <Link href="/projects" className="inline-link aside-link">
+            Explore project evidence <ArrowUpRight size={16} />
+          </Link>
+        </aside>
+      </div>
+
+      <section className="capability-section">
+        <span className="eyebrow">TECHNICAL FOUNDATION</span>
+        <h2>Methods and tools<span className="period">.</span></h2>
+        <div className="capability-grid">
+          <article>
+            <h3>Agentic systems</h3>
+            <p>LangGraph, MCP, typed tool contracts, multi-step workflows, RAG, bounded model behaviour.</p>
+          </article>
+          <article>
+            <h3>Machine learning</h3>
+            <p>PyTorch, scikit-learn, CNNs, regression, cross-validation, calibration, uncertainty, GradCAM.</p>
+          </article>
+          <article>
+            <h3>Engineering</h3>
+            <p>Python, FastAPI, Pydantic, SQL, PostgreSQL, automated tests, integration validation, Git.</p>
+          </article>
+          <article>
+            <h3>Research methods</h3>
+            <p>Hypothesis testing, residual diagnostics, error analysis, experimental comparison, reproducible reporting.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  );
+}
