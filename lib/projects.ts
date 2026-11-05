@@ -18,41 +18,81 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+
+  {
+    slug: "carepath-ai",
+    title: "CarePath AI",
+    eyebrow: "Responsible AI hackathon finalist",
+    status: "Research prototype",
+    area: "Healthcare AI assurance",
+    order: 1,
+    featured: true,
+    excerpt:
+      "A privacy-aware AI prototype designed to make blood-test results more understandable while protecting personal information and grounding explanations in retrieved evidence.",
+    question:
+      "How can AI help patients understand laboratory results without unnecessarily exposing personal information or presenting unsupported explanations as medical advice?",
+    contribution:
+      "Contributed to the privacy pipeline, focusing on anonymising medical documents and testing whether laboratory measurements and units remain usable after processing. Added regression coverage for OCR-corrupted laboratory units.",
+    approach: [
+      "Separated document anonymisation from downstream explanation generation to reduce unnecessary exposure of identifiable patient information.",
+      "Used OCR and personal-information detection to support redaction while preserving laboratory values needed for interpretation.",
+      "Incorporated patient confirmation and retrieval-grounded explanations as safeguards against extraction errors and unsupported answers.",
+    ],
+    evaluation: [
+      "Added privacy-pipeline regression tests, including a case that rejects OCR-corrupted laboratory units.",
+      "The team demonstrated the prototype at the Synoptix Responsible AI Hackathon, finishing among the top four teams.",
+      "Software tests and hackathon assessment do not establish clinical accuracy, privacy guarantees, or patient safety.",
+    ],
+    evidence: [
+      "The public repository documents the prototype architecture and implementation.",
+      "Hackathon judges recognised the team's consideration of privacy, security, explainability, and transparency.",
+      "The project strengthened my focus on AI assurance: examining what information a system receives, what it can safely produce, and how failures are detected.",
+    ],
+    caveats: [
+      "Hackathon research prototype; not clinically validated or intended to replace professional medical interpretation.",
+      "Anonymisation reduces privacy risks but cannot guarantee that all identifying information is removed.",
+      "Further evaluation is needed for OCR robustness, clinical correctness, retrieval quality, and realistic user testing.",
+    ],
+    stack: ["Python", "OCR", "Microsoft Presidio", "RAG", "AI assurance", "pytest"],
+    github: "https://github.com/ramy-glitch/CarePath_AI",
+  },
+
   {
     slug: "tazama",
     title: "Tazama AI",
     eyebrow: "Agentic healthcare workflow",
     status: "Research prototype",
-    area: "Agentic AI",
-    order: 1,
+    area: "Agentic AI assurance",
+    order: 2,
     featured: true,
     excerpt:
-      "A human-supervised waiting-room reassessment workflow with LangGraph, MCP, deterministic clinical rules, and auditable review evidence.",
+      "An AI-assisted clinical reassessment prototype designed to help nurses identify outstanding reviews while keeping clinical priority decisions deterministic, traceable, and human-supervised.",
     question:
-      "How can an agentic workflow help a nurse take a structured second look without allowing a model to make or approve a clinical decision?",
+      "How can agentic AI support timely patient reassessment without allowing a language model to determine clinical priority or replace clinician judgement?",
     contribution:
-      "Designed and implemented the full-stack research prototype, including orchestration, typed MCP tools, deterministic scoring, audit storage, API contracts, and the clinician-facing dashboard.",
+      "Contributed to API validation, reassessment persistence, dashboard integration, consistent observation handling, and regression testing. Focused on making workflow failures explicit and ensuring clinical evidence remains consistent across processing steps.",
     approach: [
-      "Used LangGraph to coordinate validation, UTC provenance, observation-history comparison, deterministic priority assessment, bounded explanation, and pending review submission.",
-      "Separated clinical rules from model behaviour: SATS/TEWS thresholds are versioned protocol data, while the optional local model can only select pre-approved explanation statements.",
-      "Implemented a custom FastMCP server plus the official Time MCP server, with correlated SQLite logs for inputs, outputs, errors, timestamps, and workflow run IDs.",
+      "Used LangGraph to coordinate observation retrieval, history comparison, deterministic SATS/TEWS assessment, bounded explanations, and pending clinician review.",
+      "Separated clinical scoring from language-model behaviour: protocol-defined rules determine priority, while optional model output is restricted to pre-approved explanatory statements.",
+      "Used typed MCP interfaces and persisted audit records to support traceability, explicit failure reporting, and review accountability.",
+      "Implemented persisted reassessment obligations and support for clinician review revisions rather than silently overwriting earlier review evidence.",
     ],
     evaluation: [
-      "Backend and frontend regression suites cover successful, insufficient-evidence, unavailable-tool, idempotency, audit-failure, and process-cleanup paths.",
-      "Synthetic cases exercise complete, minimum-only, and abstained outcomes; API responses preserve missing and off-chart evidence rather than filling gaps.",
-      "A documented evaluation contains one expected failure for an omitted nurse sign, keeping a known limitation visible rather than treating the suite as clinical validation.",
+      "Regression tests cover reassessment API responses, persisted review requests, idempotency, unavailable MCP tools, and explicit failure codes.",
+      "Tests verify consistent observation snapshots so priority assessment does not silently use different measurements from the history-comparison step.",
+      "Synthetic scenarios exercise successful and incomplete reassessments; passing software tests does not establish clinical safety.",
     ],
     evidence: [
-      "Working FastAPI and Next.js implementation with a reproducible local launcher.",
-      "Typed MCP tool contracts, append-only review evidence, and queryable tool-call audit records are implemented in the public repository.",
-      "The workflow can prepare a pending review but cannot approve it or change a patient queue.",
+      "Working FastAPI and Next.js research prototype with structured reassessment endpoints and dashboard functionality.",
+      "Implemented due-reassessment endpoint and persisted review evidence, including revision-aware review handling.",
+      "The workflow prepares evidence for clinician review rather than autonomously approving clinical decisions.",
     ],
     caveats: [
-      "Synthetic-data research prototype only; it is not clinically validated or authorised for patient care.",
-      "One pending review is supported per observation; review versioning and overdue-reassessment detection are not implemented.",
-      "Passing software tests does not establish clinical safety, generalisability, or improved patient outcomes.",
+      "Synthetic-data research prototype; not clinically validated or authorised for patient care.",
+      "Adult SATS chart applicability gating remains under development and is not claimed as implemented.",
+      "Automated software verification does not demonstrate clinical effectiveness, improved patient outcomes, or deployment readiness.",
     ],
-    stack: ["Python", "LangGraph", "MCP", "FastAPI", "Next.js", "SQLite", "Ollama"],
+    stack: ["Python", "LangGraph", "MCP", "FastAPI", "Next.js", "SQLite", "pytest"],
     github: "https://github.com/Bucci-beep/triageguard-ai",
   },
   {
@@ -61,31 +101,31 @@ export const projects: Project[] = [
     eyebrow: "MSc collaborative research",
     status: "Completed",
     area: "Trustworthy ML",
-    order: 2,
+    order: 3,
     featured: true,
     excerpt:
-      "A physiological-signal pipeline combining 1D-CNN modelling, uncertainty and OOD controls, explainability, and deterministic verification.",
+      "A physiological-signal analysis pipeline investigating why strong classification accuracy is insufficient without uncertainty estimation, error analysis, explainability, and software verification.",
     question:
-      "What reliability evidence is needed when strong headline accuracy may conceal class-imbalance and out-of-distribution failure modes?",
+      "How can we evaluate physiological-signal models when high overall accuracy may conceal poor performance on minority classes or unfamiliar inputs?",
     contribution:
-      "Developed multi-format ingestion, signal preprocessing, deterministic reasoning, uncertainty and OOD routing, and verification components within a collaborative MSc project.",
+      "Developed signal ingestion and preprocessing, deterministic reasoning, uncertainty and out-of-distribution routing, and verification components within a collaborative MSc research project.",
     approach: [
-      "Built 1D physiological-signal preprocessing and feature pipelines for neural inference.",
-      "Introduced uncertainty estimation and out-of-distribution routing instead of forcing every input through the same prediction path.",
-      "Used GradCAM to trace model activations to morphological wave intervals and deterministic rules to check benchmark-derived intervals.",
+      "Processed physiological signals for 1D-CNN inference, preserving signal information needed for downstream classification and interpretation.",
+      "Investigated uncertainty and out-of-distribution detection because unfamiliar inputs should not automatically receive confident predictions.",
+      "Used GradCAM and deterministic interval checks to examine model behaviour beyond predicted labels.",
     ],
     evaluation: [
-      "Evaluation covered 18,347 test instances.",
-      "A 92.82% headline accuracy was reported alongside macro F1 of 0.455, exposing class-imbalance failure modes and motivating sample weighting.",
-      "The architecture was exercised by 341 unit and regression tests; this verifies software behaviour, not clinical validity.",
+      "Evaluated 18,347 test instances, reporting 92.82% accuracy alongside macro F1 of 0.455.",
+      "The difference between accuracy and macro F1 exposed weaknesses associated with class imbalance and motivated further investigation.",
+      "341 unit and regression tests exercised software behaviour; these tests do not establish clinical effectiveness.",
     ],
     evidence: [
-      "The completed MSc project connects model evaluation, error analysis, interpretability, and software verification.",
-      "The public repository documents the evolving bio-signal and clinical extraction architecture.",
+      "The project connects model evaluation, uncertainty handling, explainability, and software verification.",
+      "The public repository documents the collaborative architecture and implementation.",
     ],
     caveats: [
-      "This was collaborative research; the contribution described here is limited to Denis's implemented areas.",
-      "The reported metrics are project evaluation results, not evidence of clinical deployment or external validation.",
+      "This was collaborative research; the personal contribution described here is limited to the components I worked on.",
+      "Reported metrics do not establish clinical generalisability or deployment readiness.",
     ],
     stack: ["Python", "PyTorch", "1D-CNN", "GradCAM", "OOD detection", "pytest"],
     github: "https://github.com/Bucci-beep/Agentic-Federated-Learning-for-Bio-Signal-Analysis",
@@ -96,30 +136,31 @@ export const projects: Project[] = [
     eyebrow: "Governed NLP workflow",
     status: "Research prototype",
     area: "Uncertainty-aware AI",
-    order: 3,
+    order: 4,
     featured: true,
     excerpt:
-      "Question-specific text classifiers with conformal prediction, explicit abstention, deterministic suitability logic, and confirmation gates.",
+      "A conversational financial risk-profiling prototype investigating how uncertainty, explicit confirmation, and deterministic rules can prevent ambiguous language from becoming an unsupported decision.",
     question:
-      "How can a system preserve uncertainty and user intent before natural-language interpretation reaches governed decision logic?",
+      "How can an AI system interpret financial risk preferences without silently treating ambiguous answers as reliable information?",
     contribution:
-      "Developed the conversational risk-profile prototype, its question-specific classification pipeline, safety gates, evaluation fixtures, and reproducible local setup.",
+      "Developed the conversational risk-profiling prototype, including question-specific classification, uncertainty handling, confirmation gates, evaluation fixtures, and reproducible setup.",
     approach: [
-      "Separated free-text interpretation from deterministic business validation and suitability logic.",
-      "Applied TF-IDF, Logistic Regression, and conformal prediction independently across 15 questions.",
-      "Kept clarification, confirmation, and save consent as explicit application gates.",
+      "Separated natural-language interpretation from deterministic suitability checks so model predictions could not independently determine the final decision.",
+      "Used TF-IDF, Logistic Regression, and conformal prediction across 15 questions to represent uncertainty rather than forcing every response into a single category.",
+      "Introduced clarification, confirmation, and explicit save consent to preserve user intent.",
     ],
     evaluation: [
-      "A 204-case evaluation is preserved as a known regression set and is not misrepresented as fresh held-out validation.",
-      "Regression tests cover accepted interpretations, ambiguity, abstention, business-rule validation, and save-consent behaviour.",
+      "Maintained a 204-case regression evaluation covering known interpretation and workflow behaviours.",
+      "Tested ambiguous responses, abstention, validation failures, and confirmation requirements.",
+      "The reused regression set is not independent held-out validation.",
     ],
     evidence: [
-      "The public repository contains a working Streamlit prototype, pinned dependency snapshot, fictional dataset provenance, and evaluation documentation.",
-      "Substantial abstention remains visible in the current checkpoint rather than being hidden behind an aggregate score.",
+      "The Streamlit prototype demonstrates separation between probabilistic interpretation and governed decision logic.",
+      "The public repository documents the implementation, evaluation fixtures, and limitations.",
     ],
     caveats: [
-      "Research and demonstration prototype only; it is not investment advice and has not established real-customer accuracy.",
-      "The reused regression set cannot support a claim of independent generalisation.",
+      "Research prototype only; not investment advice or a validated financial suitability service.",
+      "Real-user performance, calibration, and generalisation remain unestablished.",
     ],
     stack: ["Python", "scikit-learn", "Conformal prediction", "Streamlit", "pytest"],
     github: "https://github.com/Bucci-beep/investwise-ai",
@@ -130,28 +171,31 @@ export const projects: Project[] = [
     eyebrow: "MSc machine learning project",
     status: "Completed",
     area: "Computer vision",
-    order: 4,
+    order: 5,
     excerpt:
-      "An end-to-end comparison from regularised linear baselines to custom CNNs and DenseNet121 across 19,938 image patches.",
+      "A comparative computer-vision study investigating whether CNN architectures can identify tuberculosis bacilli more effectively than traditional image-feature baselines.",
     question:
-      "When do spatial inductive biases materially improve image classification over flattened-feature baselines?",
+      "Can spatial feature learning improve tuberculosis bacillus classification, and what do classification errors reveal about model reliability?",
     contribution:
-      "Engineered the modelling and evaluation pipeline, including PCA baselines, cross-validation, model comparison, error analysis, and formal significance testing.",
+      "Developed the image-processing, modelling, and evaluation pipeline, comparing classical machine-learning baselines with CNN and DenseNet121 approaches.",
     approach: [
-      "Compared regularised Logistic Regression, custom CNNs, and transfer learning with DenseNet121.",
-      "Used PCA, stratified k-fold cross-validation, and grid search to control the baseline comparison.",
-      "Analysed false-positive and false-negative distributions to identify limits of flattened feature representations.",
+      "Established Logistic Regression and PCA-based baselines before introducing CNN architectures to assess whether additional complexity improved performance.",
+      "Compared architectures using controlled training and evaluation procedures.",
+      "Examined false positives and false negatives because accuracy alone does not describe the consequences of missed or incorrectly identified bacilli.",
     ],
     evaluation: [
-      "The DenseNet121 test result was 92.48% classification accuracy on the project dataset.",
-      "McNemar testing reported a statistically significant difference from baseline models (p < 0.01).",
+      "The recorded DenseNet121 test accuracy was 92.48% on the project image-patch dataset.",
+      "McNemar testing reported statistically significant differences from baseline models (p < 0.01).",
+      "These results support comparisons within the experimental dataset, not clinical diagnostic claims.",
     ],
     evidence: [
-      "The project demonstrates experimental comparison, statistical testing, and failure analysis rather than reporting accuracy alone.",
+      "The study demonstrates baseline construction, model comparison, statistical testing, and error analysis.",
+      "The experimental workflow provides evidence of practical machine-learning research beyond headline accuracy.",
     ],
     caveats: [
-      "This is an academic project result on image patches, not evidence of clinical generalisability or deployment readiness.",
-      "A public source repository is not currently linked from this portfolio.",
+      "Models were evaluated on academic image patches, not independently validated clinical microscopy workflows.",
+      "External generalisation, potential data leakage, and clinically relevant false-negative behaviour require further investigation.",
+      "A public source repository is not currently linked.",
     ],
     stack: ["Python", "PyTorch", "DenseNet121", "PCA", "Cross-validation", "McNemar test"],
   },
@@ -161,59 +205,34 @@ export const projects: Project[] = [
     eyebrow: "Evidence-grounded RAG",
     status: "Research prototype",
     area: "Biomedical NLP",
-    order: 5,
+    order: 6,
     excerpt:
-      "A protocol retrieval and typed API workflow for structured quality-control checks on synthetic imaging reports.",
+      "A biomedical retrieval prototype exploring how imaging-report quality checks can be supported by relevant protocol evidence instead of unconstrained language-model responses.",
     question:
-      "How can a retrieval system ground a structured quality-control assessment in protocol evidence?",
+      "How can an AI-assisted quality-control workflow connect its conclusions to identifiable protocol evidence while making unsupported outputs easier to detect?",
     contribution:
-      "Built the local retrieval pipeline, structured FastAPI interface, and evidence-oriented response contract.",
+      "Implemented the local retrieval pipeline, structured FastAPI interface, and evidence-oriented response contract.",
     approach: [
-      "Embedded local protocol text with Ollama and indexed it in Chroma for request-time retrieval.",
-      "Used FastAPI and Pydantic to expose structured case inputs and quality-control outputs.",
-      "Constrained the prompt to retrieved context instead of presenting the model as an independent authority.",
+      "Indexed protocol documents using local embeddings and Chroma to retrieve relevant evidence for quality-control requests.",
+      "Used FastAPI and Pydantic to separate structured case inputs from model-generated interpretation.",
+      "Constrained generation to retrieved protocol context because plausible responses are not sufficient evidence of correctness.",
     ],
     evaluation: [
-      "The repository demonstrates the end-to-end retrieval and API path, but does not yet provide a formal model evaluation suite.",
+      "Demonstrated the end-to-end retrieval and API workflow using synthetic imaging-report inputs.",
+      "Formal retrieval-quality, answer-faithfulness, and clinical evaluation remain outstanding.",
     ],
     evidence: [
-      "A public implementation exposes a `/qc` endpoint and documents the retrieval architecture.",
+      "The public implementation exposes a /qc endpoint and documents the retrieval workflow.",
+      "The prototype demonstrates an evidence-oriented architecture while keeping evaluation limitations explicit.",
     ],
     caveats: [
-      "Not validated for real clinical use.",
-      "The current parser has a documented hardening issue when model output contains wrapper text; stronger structured generation and tests remain future work.",
+      "The system has not been validated for real clinical quality-control decisions.",
+      "Model-output parsing requires further hardening, and retrieved context does not guarantee a correct answer.",
     ],
     stack: ["FastAPI", "Pydantic", "Chroma", "Ollama", "LangChain", "RAG"],
     github: "https://github.com/Bucci-beep/imaging-trial-assistant",
   },
-  {
-    slug: "phd-opportunity-agent",
-    title: "AI PhD Opportunity Agent",
-    eyebrow: "Research discovery tooling",
-    status: "In progress",
-    area: "Agentic systems",
-    order: 6,
-    excerpt:
-      "A provenance-aware opportunity tracker connecting research interests, supervisors, funding sources, and application history.",
-    question:
-      "How can changing research opportunities be collected without losing source provenance or historical context?",
-    contribution:
-      "Designed the relational data model and early ingestion structure for opportunities, supervisors, sources, profiles, and applications.",
-    approach: [
-      "Modelled source records and snapshots explicitly rather than overwriting changing opportunity information.",
-      "Separated research-profile data from opportunity and application records.",
-    ],
-    evaluation: [
-      "Schema migrations and seed data support structural checks; discovery and ranking quality have not been evaluated.",
-    ],
-    evidence: ["The public repository records the evolving data and agent architecture."],
-    caveats: [
-      "Automated discovery, ranking, and alert quality are still in development.",
-      "Project status is presented as in progress, not as a completed research product.",
-    ],
-    stack: ["Python", "PostgreSQL", "Supabase", "Data provenance"],
-    github: "https://github.com/Bucci-beep/ai-phd-opportunity-agent",
-  },
+
   {
     slug: "ml-algorithms",
     title: "ML Algorithms Engineering",
@@ -222,18 +241,26 @@ export const projects: Project[] = [
     area: "Machine learning",
     order: 7,
     excerpt:
-      "Implementations and controlled exercises for studying model assumptions, optimisation behaviour, and evaluation trade-offs.",
+      "A collection of machine-learning implementations and controlled experiments exploring how model assumptions, optimisation choices, and evaluation methods influence behaviour.",
     question:
-      "What becomes visible about model behaviour when common algorithms are implemented and tested from first principles?",
+      "What can implementing and testing machine-learning algorithms from first principles reveal about their assumptions, strengths, and failure modes?",
     contribution:
-      "Implemented and documented foundational machine-learning exercises for controlled experimentation.",
+      "Implemented and documented foundational machine-learning exercises to strengthen my understanding of algorithm behaviour and reproducible experimentation.",
     approach: [
-      "Built supervised-learning components with Python and NumPy.",
-      "Used small, inspectable examples to investigate optimisation and sensitivity to observations.",
+      "Implemented supervised-learning exercises using Python and NumPy to make core computations and assumptions inspectable.",
+      "Used small controlled experiments to investigate optimisation behaviour and sensitivity to input data.",
+      "Documented implementation choices and observations as a foundation for more advanced applied research.",
     ],
-    evaluation: ["Repository exercises provide implementation checks; no benchmark or production claim is made."],
-    evidence: ["Public code records the learning and experimentation process."],
-    caveats: ["This is a foundations repository, not a deployed system or completed scientific study."],
+    evaluation: [
+      "Exercises provide implementation checks and opportunities to compare expected and observed algorithm behaviour.",
+      "No formal benchmark, novel research result, or production-performance claim is made.",
+    ],
+    evidence: [
+      "The public repository documents practical experimentation and foundational implementation work.",
+    ],
+    caveats: [
+      "This is an ongoing learning and experimentation repository rather than a completed scientific study.",
+    ],
     stack: ["Python", "NumPy", "Machine learning", "Testing"],
     github: "https://github.com/Bucci-beep/ml-algorithms-engineering",
   },
